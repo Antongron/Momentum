@@ -41,11 +41,11 @@ const time = document.getElementById('time'),
 
     if (hour < 12) {
         //Morning
-        document.body.style.backgroundImage = "url('../morning.jpg')";
+        document.body.style.backgroundImage = "url('https://pixabay.com/get/54e0d7444850ac14f6d1867dda2933771238dbed534c704f752c7dd1904cc45a_1920.jpg')";
         greeting.textContent = 'Good Morning';
     } else if (hour < 18) {
         //Afternoon
-        document.body.style.backgroundImage = "url('../afternoon.jpg')";
+        document.body.style.backgroundImage = "url('https://pixabay.com/get/57e0d4474d53ae14f6d1867dda2933771238dbed534c704f752c7dd1904dc45e_1920.jpg')";
         greeting.textContent = 'Good Afternoon';
     } else {
         //Evening
