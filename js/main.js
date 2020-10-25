@@ -49,7 +49,7 @@ const time = document.getElementById('time'),
         greeting.textContent = 'Good Afternoon';
     } else {
         //Evening
-        document.body.style.backgroundImage = "url('../night.jpg')";
+        document.body.style.backgroundImage = "url('https://pixabay.com/get/51e3d34b4d5bb114f6dc8d7ac02d3f7e083ed8e55057744f722a7f.jpg')";
         greeting.textContent = 'Good Evening';
         document.body.style.color = 'white';
     }
