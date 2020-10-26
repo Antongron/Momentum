@@ -39,14 +39,18 @@ const time = document.getElementById('time'),
     let today = new Date(),
       hour = today.getHours();
 
-    if (hour < 12) {
+    if (hour >= 6 && hour < 12) {
         //Morning
         document.body.style.backgroundImage = "url('https://pixabay.com/get/54e0d7444850ac14f6d1867dda2933771238dbed534c704f752c7dd1904cc45a_1920.jpg')";
         greeting.textContent = 'Good Morning';
-    } else if (hour < 18) {
+    } else if (hour >=12 && hour < 18) {
         //Afternoon
         document.body.style.backgroundImage = "url('https://pixabay.com/get/57e0d4474d53ae14f6d1867dda2933771238dbed534c704f752c7dd1904dc45e_1920.jpg')";
         greeting.textContent = 'Good Afternoon';
+    } else if (hour>= 18 && hour < 24) {
+        //Evening
+        document.body.style.backgroundImage = "url('https://pixabay.com/get/51e3d34b4257b114f6dc8d7ac02d3f7e083ed8e55057794c712a7b.jpg')";
+        greeting.textContent = 'Good Evening';
     } else {
         //Evening
         document.body.style.backgroundImage = "url('https://pixabay.com/get/51e3d34b4d5bb114f6dc8d7ac02d3f7e083ed8e55057744f722a7f.jpg')";
