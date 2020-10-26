@@ -1,35 +1,27 @@
-// DPM Elements
+
 const time = document.getElementById('time'),
+  date = document.getElementById('date'),
   greeting = document.getElementById('greeting'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus');
 
-
-  // Options
   const showAmPm = true;
 
-  //Show Time
   function showTime() {
       let tody = new Date(),
         hour = tody.getHours(),
         min = tody.getMinutes(),
         sec = tody.getSeconds();
 
-        //Set AM or PM
-        //const amPm = hour >= 12 ? 'PM' : 'AM';
+        
 
-        // 12hr Format
-        //hour = hour % 12 || 12;
-
-        // Output Time
         time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
             sec
             )}`;
-   //${showAmPm ? amPm : ''}
+        date.innerHTML = new Date(tody.getFullYear(), tody.getMonth(), tody.getDate()).toString().split(' ').splice(0, 4).join(' ');
         setTimeout(showTime, 1000);
   }
 
-  //Add Zeros
   function addZero(n) {
       return (parseInt(n, 10) < 10 ? '0' : '') + n;
   }
@@ -39,22 +31,18 @@ const time = document.getElementById('time'),
     let today = new Date(),
       hour = today.getHours();
 
-    if (hour >= 6 && hour < 12) {
-        //Morning
-        document.body.style.backgroundImage = "url('https://pixabay.com/get/54e0d7444850ac14f6d1867dda2933771238dbed534c704f752c7dd1904cc45a_1920.jpg')";
+    if (hour > 6 && hour < 12) {
+        document.body.style.backgroundImage = "url('img/morning.jpg')";
         greeting.textContent = 'Good Morning';
-    } else if (hour >=12 && hour < 18) {
-        //Afternoon
-        document.body.style.backgroundImage = "url('https://pixabay.com/get/57e0d4474d53ae14f6d1867dda2933771238dbed534c704f752c7dd1904dc45e_1920.jpg')";
+    } else if (hour >= 12 && hour < 18) {
+        document.body.style.backgroundImage = "url('img/afternoon.jpg')";
         greeting.textContent = 'Good Afternoon';
     } else if (hour>= 18 && hour < 24) {
-        //Evening
         document.body.style.backgroundImage = "url('https://pixabay.com/get/51e3d34b4257b114f6dc8d7ac02d3f7e083ed8e55057794c712a7b.jpg')";
         greeting.textContent = 'Good Evening';
     } else {
-        //Evening
-        document.body.style.backgroundImage = "url('https://pixabay.com/get/51e3d34b4d5bb114f6dc8d7ac02d3f7e083ed8e55057744f722a7f.jpg')";
-        greeting.textContent = 'Good Evening';
+        document.body.style.backgroundImage = "url('./img/night.jpg')";
+        greeting.textContent = 'Good Night';
         document.body.style.color = 'white';
     }
   };
@@ -91,7 +79,6 @@ const time = document.getElementById('time'),
     };
 
 
-    //Set Focus
     function setName(e) {
         if(e.type === 'keypress') {
             //Make sure enter is pressed
@@ -109,7 +96,7 @@ const time = document.getElementById('time'),
     focus.addEventListener('keypress', setName);
     focus.addEventListener('blur', setName);
 
-  //Run
+
   showTime();
   setBgGreet();
   getName();
