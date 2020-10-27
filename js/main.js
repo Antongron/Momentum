@@ -90,16 +90,16 @@ function setName(e) {
     };
 
 
-    //Set Focus
+    //Set Name
     function setName(e) {
         if(e.type === 'keypress') {
             //Make sure enter is pressed
             if(e.which == 13 || e.keyCode == 13) {
-                localStorage.setItem('focus', e.target.innerText);
+                localStorage.setItem('name', e.target.innerText);
                 focus.blur();
             }
         } else {
-            localStorage.setItem('focus', e.target.innerText);
+            localStorage.setItem('name', e.target.innerText);
         }
     };
     
