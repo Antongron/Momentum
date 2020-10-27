@@ -13,6 +13,9 @@ body {
     text-align: center;
     height: 100vh;
     color: white;
+    background-size: cover;  
+    transition:  1s ease-in-out;
+
 }
 
 #time {
@@ -33,3 +36,24 @@ h2 {
         font-size: 6rem;
     }
 }
+  
+  .btn {
+    width: 60px;
+    height: 60px;
+    border: 0;
+    background: url("https://github.com/Antongron/Momentum/blob/main/img/refresh.png?raw=true");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: grayscale(1);
+    margin: 10px;
+  }
+  .btn:hover {
+    filter: grayscale(0.6);
+  }
+  .btn:active,
+  .btn:focus {
+    outline: 0;
+  }
+  .btn:active{
+    transform: scale(1.02)
+  }
