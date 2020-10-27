@@ -1,3 +1,4 @@
+// DPM Elements
 const time = document.getElementById('time'),
   timeWeek = document.getElementById('time-week'),
   greeting = document.getElementById('greeting'),
@@ -8,10 +9,11 @@ const time = document.getElementById('time'),
   const montsArr = ["Jannuary", "Frbruary", "March", "April", "May", "June", "July", "August", "September", "October", "Nowember", "December"],
         nameDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-
+  // Options
   const showAmPm = true;
 
-
+ 
+  //Show Time
   function showTime() {
       let today = new Date(),
         month = today.getMonth(),
@@ -32,10 +34,12 @@ const time = document.getElementById('time'),
         setTimeout(showTime, 1000);
   }
 
+  //Add Zeros
   function addZero(n) {
       return (parseInt(n, 10) < 10 ? '0' : '') + n;
   }
 
+  //Set Background and Greeting
   function setBgGreet() {
     let today = new Date(),
       hour = today.getHours();
@@ -60,7 +64,8 @@ const time = document.getElementById('time'),
     }
   };
 
-function setName(e) {
+  //Set Name
+  function setName(e) {
       if(e.type === 'keypress') {
           //Make sure enter is pressed
           if(e.which == 13 || e.keyCode == 13) {
@@ -72,6 +77,7 @@ function setName(e) {
       }
   };
 
+  //Get Name
   function getName() {
       if(localStorage.getItem('name') === null) {
           name.textContent = ' [Enter Name]';
@@ -90,25 +96,26 @@ function setName(e) {
     };
 
 
-    //Set Name
-    function setName(e) {
+    //Set Focus
+    function setFocus(e) {
         if(e.type === 'keypress') {
             //Make sure enter is pressed
             if(e.which == 13 || e.keyCode == 13) {
-                localStorage.setItem('name', e.target.innerText);
+                localStorage.setItem('focus', e.target.innerText);
                 focus.blur();
             }
         } else {
-            localStorage.setItem('name', e.target.innerText);
+            localStorage.setItem('focus', e.target.innerText);
         }
     };
     
 
     name.addEventListener('keypress', setName);
     name.addEventListener('blur', setName);
-    focus.addEventListener('keypress', setName);
-    focus.addEventListener('blur', setName);
+    focus.addEventListener('keypress', setFocus);
+    focus.addEventListener('blur', setFocus);
 
+  //Run
   showTime();
   setBgGreet();
   getName();
