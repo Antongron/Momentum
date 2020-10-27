@@ -1,24 +1,34 @@
-
 const time = document.getElementById('time'),
-  date = document.getElementById('date'),
+  timeWeek = document.getElementById('time-week'),
   greeting = document.getElementById('greeting'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus');
 
+
+  const montsArr = ["Jannuary", "Frbruary", "March", "April", "May", "June", "July", "August", "September", "October", "Nowember", "December"],
+        nameDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+
   const showAmPm = true;
 
+
   function showTime() {
-      let tody = new Date(),
-        hour = tody.getHours(),
-        min = tody.getMinutes(),
-        sec = tody.getSeconds();
+      let today = new Date(),
+        month = today.getMonth(),
+        date = today.getMonth(),
+        day = today.getDay(),
+        year = today.getFullYear(),
+        hour = today.getHours(),
+        min = today.getMinutes(),
+        sec = today.getSeconds();
 
         
 
+        // Output Time
         time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
             sec
             )}`;
-        date.innerHTML = new Date(tody.getFullYear(), tody.getMonth(), tody.getDate()).toString().split(' ').splice(0, 4).join(' ');
+        timeWeek.innerHTML = `${nameDays[day]}<span> </span>${date}<span> </span>${montsArr[month]} <span> </span>${year}`;
         setTimeout(showTime, 1000);
   }
 
@@ -26,29 +36,31 @@ const time = document.getElementById('time'),
       return (parseInt(n, 10) < 10 ? '0' : '') + n;
   }
 
-  //Set Background and Greeting
   function setBgGreet() {
     let today = new Date(),
       hour = today.getHours();
 
     if (hour > 6 && hour < 12) {
-        document.body.style.backgroundImage = "url('img/morning.jpg')";
+        //Morning
+        document.body.style.backgroundImage = "url('https://github.com/Antongron/Momentum/blob/gh-pages/img/afternoon.jpg?raw=true')";
         greeting.textContent = 'Good Morning';
     } else if (hour >= 12 && hour < 18) {
-        document.body.style.backgroundImage = "url('img/afternoon.jpg')";
+        //Afternoon
+        document.body.style.backgroundImage = "url('https://github.com/Antongron/Momentum/blob/gh-pages/img/afternoon.jpg?raw=true')";
         greeting.textContent = 'Good Afternoon';
     } else if (hour>= 18 && hour < 24) {
-        document.body.style.backgroundImage = "url('https://pixabay.com/get/51e3d34b4257b114f6dc8d7ac02d3f7e083ed8e55057794c712a7b.jpg')";
+        //Evening
+        document.body.style.backgroundImage = "url('https://github.com/Antongron/Momentum/blob/gh-pages/img/evening.jpg?raw=true')";
         greeting.textContent = 'Good Evening';
     } else {
-        document.body.style.backgroundImage = "url('./img/night.jpg')";
+        //Night
+        document.body.style.backgroundImage = "url('https://github.com/Antongron/Momentum/blob/gh-pages/img/afternoon.jpg?raw=true')";
         greeting.textContent = 'Good Night';
         document.body.style.color = 'white';
     }
   };
 
-  //Set Name
-  function setName(e) {
+function setName(e) {
       if(e.type === 'keypress') {
           //Make sure enter is pressed
           if(e.which == 13 || e.keyCode == 13) {
@@ -60,7 +72,6 @@ const time = document.getElementById('time'),
       }
   };
 
-  //Get Name
   function getName() {
       if(localStorage.getItem('name') === null) {
           name.textContent = ' [Enter Name]';
@@ -79,6 +90,7 @@ const time = document.getElementById('time'),
     };
 
 
+    //Set Focus
     function setName(e) {
         if(e.type === 'keypress') {
             //Make sure enter is pressed
@@ -90,12 +102,12 @@ const time = document.getElementById('time'),
             localStorage.setItem('focus', e.target.innerText);
         }
     };
+    
 
     name.addEventListener('keypress', setName);
     name.addEventListener('blur', setName);
     focus.addEventListener('keypress', setName);
     focus.addEventListener('blur', setName);
-
 
   showTime();
   setBgGreet();
