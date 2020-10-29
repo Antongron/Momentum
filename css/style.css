@@ -13,6 +13,11 @@ body {
     text-align: center;
     height: 100vh;
     color: white;
+    text-shadow:
+        0.07em 0 black,
+        0 0.07em black,
+        -0.07em 0 black,
+        0 -0.07em black;
     background-size: cover;  
     transition:  1s ease-in-out;
 

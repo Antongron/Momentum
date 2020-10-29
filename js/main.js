@@ -44,7 +44,7 @@ const time = document.getElementById('time'),
     let today = new Date(),
       hour = today.getHours();
 
-    if (hour > 6 && hour < 12) {
+    if (hour > 5 && hour < 12) {
         //Morning
         document.body.style.backgroundImage = "url('https://github.com/Antongron/Momentum/blob/gh-pages/img/afternoon.jpg?raw=true')";
         greeting.textContent = 'Good Morning';
@@ -120,3 +120,48 @@ const time = document.getElementById('time'),
   setBgGreet();
   getName();
   getFocus();
+
+  const baseMorning = '/img/morning/';
+  const imagesMorning = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg'];
+  const baseDay = '/img/day/',
+        imagesDay = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg'];
+  let i = 0;
+  
+  function viewBgImage(data) {
+    const body = document.querySelector('body');
+    const src = data;
+    const img = document.createElement('img');
+    img.src = src;
+    img.onload = () => {      
+      body.style.backgroundImage = `url(${src})`;
+    }; 
+  }
+  function getImage() {
+    let today = new Date(),
+    hour = today.getHours();
+    if (hour > 5 && hour < 12) {
+        //Morning
+        const index = i % imagesMorning.length;
+        const imageSrc = baseMorning + imagesMorning[index];
+        viewBgImage(imageSrc);
+    } else if (hour >= 12 && hour < 18) {
+        //Afternoon
+        const index = i % imagesDay.length;
+        const imageSrc = baseDay + imagesDay[index];
+        viewBgImage(imageSrc);
+    } else if (hour>= 18 && hour < 24) {
+        //Evening
+        
+    } else {
+        //Night
+        
+    }
+    
+        i++;
+        btn.disabled = true;
+        setTimeout(function() { btn.disabled = false }, 1000);
+  } 
+  const btn = document.querySelector('.btn');
+  btn.addEventListener('click', getImage);
+  setTimeout(getImage, 1000);
+  setInterval(getImage, 3600000);
