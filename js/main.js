@@ -121,10 +121,14 @@ const time = document.getElementById('time'),
   getName();
   getFocus();
 
-  const baseMorning = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/morning/';
-  const imagesMorning = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg'];
-  const baseDay = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/day/',
-        imagesDay = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg'];
+    const baseMorning = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/morning/',
+        imagesMorning = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg'],
+        baseDay = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/day/',
+        imagesDay = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg'],
+        baseEvening = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/evening/',
+        imagesEvening = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg'],
+        baseNight = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/night/',
+        imagesNight = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg'];
   let i = 0;
   
   function viewBgImage(data) {
@@ -151,10 +155,14 @@ const time = document.getElementById('time'),
         viewBgImage(imageSrc);
     } else if (hour>= 18 && hour < 24) {
         //Evening
-        
+        const index = i % imagesEvening.length;
+        const imageSrc = baseEvening + imagesEvening[index];
+        viewBgImage(imageSrc);
     } else {
         //Night
-        
+        const index = i % imagesNight.length;
+        const imageSrc = baseNight + imagesNight[index];
+        viewBgImage(imageSrc);
     }
     
         i++;
