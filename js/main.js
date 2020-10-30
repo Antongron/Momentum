@@ -121,9 +121,9 @@ const time = document.getElementById('time'),
   getName();
   getFocus();
 
-  const baseMorning = '/img/morning/';
+  const baseMorning = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/morning/';
   const imagesMorning = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg'];
-  const baseDay = '/img/day/',
+  const baseDay = 'https://raw.githubusercontent.com/Antongron/Momentum/main/img/day/',
         imagesDay = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg'];
   let i = 0;
   
