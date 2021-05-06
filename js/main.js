@@ -119,6 +119,7 @@ const time = document.getElementById('time'),
       userName.textContent = '[Введи имя]';
     } else {
       userName.textContent = localStorage.getItem('userName');
+
     }
   }
   
@@ -185,7 +186,4 @@ const time = document.getElementById('time'),
   getName();
   getFocus();
 
-
- 
-  
   setInterval(getImage, 3600000);
