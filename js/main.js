@@ -2,7 +2,7 @@
 const time = document.getElementById('time'),
   timeWeek = document.getElementById('time-week'),
   greeting = document.getElementById('greeting'),
-  name = document.getElementById('name'),
+  userName = document.getElementById('name'),
   focus = document.getElementById('focus');
 
 
@@ -115,10 +115,11 @@ const time = document.getElementById('time'),
   };
 
   function getName() {
-    if (localStorage.getItem('name') === null) {
-      name.textContent = '[Введи имя]';
+    if (localStorage.getItem('userName') === null) {
+      userName.textContent = '[Введи имя]';
     } else {
-      name.textContent = localStorage.getItem('name');
+      userName.textContent = localStorage.getItem('userName');
+
     }
   }
   
@@ -127,15 +128,15 @@ const time = document.getElementById('time'),
       if (e.which == 13 || e.keyCode == 13) {
         if (e.target.innerText.trim().length === 0) {
           getName();
-          name.blur();
+          userName.blur();
           return;
         } else {
-          localStorage.setItem('name', e.target.innerText);
-          name.blur();
+          localStorage.setItem('userName', e.target.innerText);
+          userName.blur();
         }
       }
     } else {
-      localStorage.setItem('name', e.target.innerText);
+      localStorage.setItem('userName', e.target.innerText);
     }
   }
   
@@ -171,11 +172,11 @@ const time = document.getElementById('time'),
 
 
 
-  name.addEventListener('keypress', setName);
-  name.addEventListener('focus', () => clear(name));
-  name.addEventListener('blur', getName);
+  userName.addEventListener('keypress', setName);
+  userName.addEventListener('click', () => clear(userName));
+  userName.addEventListener('blur', getName);
   focus.addEventListener('keypress', setFocus);
-  focus.addEventListener('focus', () => clear(focus));
+  focus.addEventListener('click', () => clear(focus));
   focus.addEventListener('blur', getFocus);
   btn.addEventListener('click', getImage);
 
@@ -185,7 +186,4 @@ const time = document.getElementById('time'),
   getName();
   getFocus();
 
-
- 
-  
   setInterval(getImage, 3600000);
